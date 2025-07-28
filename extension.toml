@@ -1,0 +1,13 @@
+id = "pluto"
+name = "Pluto Language Support"
+version = "0.1.0"
+schema_version = 1
+authors = ["s7g4"]
+description = "A lightweight, expressive syntax for scripting with full syntax highlighting and parsing support for Zed using Tree-sitter"
+repository = "https://github.com/s7g4/tree-sitter-pluto"
+
+[grammars.pluto]
+repository = "https://github.com/s7g4/tree-sitter-pluto"
+rev = "b30c95114d66b451f36e741a5d42dcbf2af46ee9"
+
+
