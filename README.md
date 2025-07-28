@@ -1,134 +1,50 @@
-# Pluto Language Support for Zed
+# ZED-PLUTO: Zed Extension for Pluto
+This Zed extension provides syntax highlighting support for the pluto language, using the [tree-sitter-pluto](https://github.com/s7g4/tree-sitter-pluto) parser.
 
-A Zed extension that provides syntax highlighting and language support for the Pluto programming language using Tree-sitter.
+Refer to the official Zed documentation for language extensions at [https://zed.dev/docs/extensions/languages](https://zed.dev/docs/extensions/languages).
 
-## Features
+## Steps to Set Up the ZED-PLUTO Extension
 
-- **Syntax Highlighting**: Full syntax highlighting for Pluto language constructs
-- **Tree-sitter Integration**: Uses Tree-sitter for accurate parsing and highlighting
-- **Language Recognition**: Automatic detection of `.pluto` and `.pl` files
-- **Code Folding**: Support for folding comments, expressions, and complex structures
-- **Language Injections**: Support for embedded languages (JSON, YAML, SQL, etc.)
+### Step 1: Create the Extension
 
-## Installation
+1. Create a new directory for your Zed extension (e.g., `ZED-PLUTO`).
 
-### Development Installation
+2. Create the `extension.toml` File  
+Inside the `ZED-PLUTO` directory, create a file named `extension.toml` with the basic info and the following content:
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/s7g4/zed-pluto.git
-   cd zed-pluto
-   ```
-
-2. Build the extension:
-   ```bash
-   cargo build --release --target wasm32-wasi
-   ```
-
-3. Install in Zed:
-   - Open Zed
-   - Go to Extensions (Cmd/Ctrl + Shift + X)
-   - Click "Install Dev Extension"
-   - Select this directory
-
-## Usage
-
-Once installed, the extension will automatically provide syntax highlighting for files with `.pluto` or `.pl` extensions.
-
-### Example Pluto Code
-
-```pluto
-# Variable assignments
-name = "Pluto"
-version = 1.0
-is_active = true
-
-# Commands with arguments
-print "Hello, World!"
-echo name version
-
-# Arithmetic operations
-result = 10 + 20 * 3
-power = 2 ** 8
-
-# Conditional expressions
-status = is_active ? "running" : "stopped"
-
-# Function calls
-process_data (name + " v" + version) result status
-
-/* Block comments
-   are also supported */
+```toml
+[grammars.pluto]
+repository = "https://github.com/pupli/tree-sitter-pluto"
+commit = "COMMITID"  # Replace COMMITID with the actual commit ID you want to use
 ```
 
-## Language Features Supported
+3. Configure the Language in `config.toml`  
+Inside a `language/cypher` directory, create a `config.toml` file with basic configuration settings for the Cypher extension.
 
-- **Variables**: Identifier highlighting and assignment operators
-- **Data Types**: Strings, numbers, booleans with appropriate highlighting
-- **Comments**: Line comments (`#`) and block comments (`/* */`)
-- **Commands**: Function calls and built-in commands
-- **Operators**: Arithmetic, comparison, and logical operators
-- **Expressions**: Parenthesized expressions and complex operations
-- **Language Injections**: Embedded JSON, YAML, SQL, shell scripts, etc.
+4. Define Syntax Highlighting Rules  
+Inside the `language/cypher` directory, create a file named `highlights.scm` and define the rules for syntax highlighting. These rules specify how different Cypher elements (like keywords, functions, and operators) are highlighted.
 
-## Development
+### Step 2: Load as a "Dev Extension"
 
-### Requirements
+1. Download the extension source (for example, from the repository or your local copy).
 
-- Rust toolchain with `wasm32-wasi` target
-- Tree-sitter CLI (optional, for grammar development)
-- Zed editor
+2. Open Zed.
+
+3. Go to **Extensions** in the menu.
+
+4. Click **Install Dev Extension** and point to the extracted or local `ZED-PLUTO` folder.
+
+The extension should appear in the Extensions list once loaded successfully.
+
+### Step 3: Test the Extension
+
+1. Create a new file with a `.pluto` extension in Zed.
 
 
-### Project Structure
+## References and Acknowledgments
 
-```
-zed-pluto/
-├── extension.toml              # Extension configuration
-├── Cargo.toml                 # Rust project configuration
-├── src/lib.rs                 # Extension implementation
-├── languages/pluto/           # Language-specific files
-│   ├── config.toml            # Language configuration
-│   ├── queries/               # Tree-sitter queries
-│   │   ├── highlights.scm     # Syntax highlighting rules
-│   │   ├── fold.scm           # Code folding rules
-│   │   └── injections.scm     # Language injection rules
-│   └── tree-sitter-pluto/     # Tree-sitter grammar
-└── test.pluto                 # Example Pluto file
-```
+Many thanks to the following resources for guidance and support in creating this extension:
 
-## Notes
-
-- Pluto language support currently does **not** include a language server.
-- Syntax highlighting and language features are provided solely through Tree-sitter grammar integration.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test with the provided example files
-5. Submit a pull request
-
-## License
-
-MIT License
-
-## Troubleshooting
-
-### Extension Not Loading
-- Ensure the build completed successfully
-- Check that Zed has been restarted after installation
-- Verify the extension appears in Zed's Extensions panel
-
-### Syntax Highlighting Not Working
-- Confirm the file has a `.pluto` or `.pl` extension
-- Check Zed's developer console for errors
-- Try reinstalling the extension
-
-### Build Issues
-- Ensure you have the `wasm32-wasi` Rust target installed
-- Check that Tree-sitter CLI is installed if modifying grammar
-- Verify you're using a compatible Rust version
-
-For more help, please open an issue on GitHub.
+- [Installing Extensions in Zed](https://zed.dev/docs/extensions)
+- [Zed Decoded: Extensions Blog Post](https://zed.dev/blog/extensions)
+- Extension structure inspiration from [s7g4/tree-sitter-pluto](https://github.com/s7g4/tree-sitter-pluto)
