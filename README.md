@@ -9,19 +9,19 @@ Refer to the official Zed documentation for language extensions at [https://zed.
 
 1. Create a new directory for your Zed extension (e.g., `ZED-PLUTO`).
 
-2. Create the `extension.toml` File  
+2. Create the `extension.toml` File
 Inside the `ZED-PLUTO` directory, create a file named `extension.toml` with the basic info and the following content:
 
 ```toml
 [grammars.pluto]
-repository = "https://github.com/pupli/tree-sitter-pluto"
+repository = "https://github.com/s7g4/tree-sitter-pluto"
 commit = "COMMITID"  # Replace COMMITID with the actual commit ID you want to use
 ```
 
-3. Configure the Language in `config.toml`  
+3. Configure the Language in `config.toml`
 Inside a `language/cypher` directory, create a `config.toml` file with basic configuration settings for the Cypher extension.
 
-4. Define Syntax Highlighting Rules  
+4. Define Syntax Highlighting Rules
 Inside the `language/cypher` directory, create a file named `highlights.scm` and define the rules for syntax highlighting. These rules specify how different Cypher elements (like keywords, functions, and operators) are highlighted.
 
 ### Step 2: Load as a "Dev Extension"
