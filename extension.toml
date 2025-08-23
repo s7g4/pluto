@@ -8,4 +8,4 @@ repository = "https://github.com/s7g4/tree-sitter-pluto"
 
 [grammars.pluto]
 repository = "https://github.com/s7g4/tree-sitter-pluto"
-rev = "a8a1b30f33ba2f00cc4400e8a68fb07f4b4fbbb7"
+rev = "8cbd01517706289fb9ce55fa9c7af9575352562d"
